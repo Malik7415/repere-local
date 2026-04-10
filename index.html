@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Repère Local Studio — Visibilité locale premium</title>
+  <meta name="description" content="Repère Local Studio optimise votre Google Business Profile et crée des pages vitrines locales premium pour artisans, indépendants et PME locales.">
+  <meta name="theme-color" content="#f7f8fb">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-soft: #fbfcff;
+  --surface-dark: #0f172a;
+  --text: #101828;
+  --muted: #667085;
+  --line: rgba(16, 24, 40, 0.08);
+  --line-strong: rgba(16, 24, 40, 0.14);
+  --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 18px 40px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 28px 80px rgba(15, 23, 42, 0.14);
+
+  --blue: #4285f4;
+  --blue-dark: #2563eb;
+  --blue-soft: rgba(66, 133, 244, 0.12);
+
+  --red: #ea4335;
+  --red-soft: rgba(234, 67, 53, 0.12);
+
+  --yellow: #fbbc05;
+  --yellow-dark: #f59e0b;
+  --yellow-soft: rgba(251, 188, 5, 0.14);
+
+  --green: #34a853;
+  --green-soft: rgba(52, 168, 83, 0.12);
+
+  --accent: var(--blue);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
+  --container: 1180px;
+  --nav-height: 78px;
+}
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 18px);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(66, 133, 244, 0.08), transparent 24%),
+    radial-gradient(circle at 100% 0, rgba(251, 188, 5, 0.08), transparent 18%),
+    linear-gradient(180deg, #f8f9fc 0%, #ffffff 28%, #f8fafc 100%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(66, 133, 244, 0.28);
+  outline-offset: 2px;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.section {
+  padding: 84px 0;
+}
+
+.section-head {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: 38px;
+  text-align: center;
+}
+
+.section-head--left {
+  margin-inline: 0;
+  text-align: left;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  box-shadow:
+    14px 0 0 0 var(--red),
+    28px 0 0 0 var(--yellow);
+  margin-right: 30px;
+  flex: 0 0 auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.9rem, 6.6vw, 5.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.08em;
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+p {
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(18px);
+  background: rgba(247, 248, 251, 0.76);
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.86);
+  border-color: rgba(16, 24, 40, 0.06);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.header-inner {
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(66, 133, 244, 0.16);
+  flex: 0 0 auto;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-copy strong {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.brand-copy span {
+  font-size: 0.83rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-toggle {
+  width: 44px;
+  height: 44px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 14px;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  display: block;
+  position: relative;
+  transition: transform 0.24s ease, opacity 0.24s ease;
+  content: "";
+}
+
+.nav-toggle span::before {
+  position: absolute;
+  top: -6px;
+  left: 0;
+}
+
+.nav-toggle span::after {
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] span::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.nav {
+  position: fixed;
+  inset: var(--nav-height) 16px auto;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  gap: 8px;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.nav.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav a {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  padding: 0 14px;
+  color: var(--muted);
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav a:hover {
+  background: rgba(66, 133, 244, 0.08);
+  color: var(--text);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  box-shadow: 0 14px 28px rgba(66, 133, 244, 0.22);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 34px rgba(66, 133, 244, 0.24);
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: var(--line);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--ghost:hover {
+  border-color: rgba(66, 133, 244, 0.18);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--sm {
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 0.94rem;
+}
+
+.hero {
+  padding-top: 18px;
+  padding-bottom: 28px;
+}
+
+.hero-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 0 0, rgba(66, 133, 244, 0.12), transparent 22%),
+    radial-gradient(circle at 100% 0, rgba(251, 188, 5, 0.12), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.94) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  isolation: isolate;
+}
+
+.hero-shell::before,
+.hero-shell::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.hero-shell::before {
+  width: 340px;
+  height: 340px;
+  right: -120px;
+  top: -80px;
+  background: radial-gradient(circle, rgba(66, 133, 244, 0.18), transparent 68%);
+  filter: blur(10px);
+}
+
+.hero-shell::after {
+  width: 280px;
+  height: 280px;
+  left: -100px;
+  bottom: -120px;
+  background: radial-gradient(circle, rgba(52, 168, 83, 0.12), transparent 68%);
+  filter: blur(10px);
+}
+
+.hero-grid {
+  display: grid;
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.7rem, 6vw, 4.7rem);
+  line-height: 0.94;
+  letter-spacing: -0.08em;
+  margin: 12px 0 14px;
+}
+
+.hero-copy p {
+  font-size: 1.02rem;
+  line-height: 1.62;
+  max-width: 34ch;
+  margin-top: 14px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.hero-points {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.hero-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 13px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+}
+
+.hero-point-badge {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
+}
+
+.hero-points .hero-point:nth-child(1) .hero-point-badge {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+}
+
+.hero-points .hero-point:nth-child(2) .hero-point-badge {
+  background: linear-gradient(135deg, var(--green), #0f9d58);
+}
+
+.hero-points .hero-point:nth-child(3) .hero-point-badge {
+  background: linear-gradient(135deg, var(--red), #d93025);
+}
+
+.hero-point strong {
+  display: block;
+  font-size: 0.97rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.hero-point span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.hero-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 430px;
+  padding: 0;
+  margin-top: 0;
+}
+
+.hero-stage::before {
+  content: "";
+  position: absolute;
+  inset: 3% 3% 3% 3%;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(66, 133, 244, 0.08), rgba(255, 255, 255, 0.34)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.62));
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+.hero-media-card {
+  position: relative;
+  width: min(100%, 430px);
+  aspect-ratio: 4 / 3.65;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #eef3fb;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 22px 56px rgba(15, 23, 42, 0.14);
+}
+
+.hero-media-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  opacity: 0.94;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+.hero-media-glow {
+  position: absolute;
+  inset: auto 8% -12% auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(66, 133, 244, 0.2), transparent 68%);
+  pointer-events: none;
+}
+
+.floating-badge,
+.floating-panel {
+  position: absolute;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+.floating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.floating-badge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--green);
+  box-shadow: 14px 0 0 var(--yellow), 28px 0 0 var(--blue);
+  margin-right: 28px;
+}
+
+.floating-badge--top {
+  top: 2%;
+  left: 8%;
+}
+
+.floating-panel {
+  width: min(190px, 46vw);
+  padding: 14px;
+  border-radius: 18px;
+}
+
+.floating-panel strong {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 6px;
+}
+
+.floating-panel span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+
+.floating-panel--one {
+  bottom: 14%;
+  left: 1%;
+}
+
+.floating-panel--two {
+  bottom: 1%;
+  right: 2%;
+}
+
+.hero-metrics {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.metric {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-sm);
+}
+
+.metric strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.metric span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.grid-3 {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  padding: 26px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(66, 133, 244, 0.16);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.grid-3 .card:nth-child(1) .card-icon {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+}
+
+.grid-3 .card:nth-child(2) .card-icon {
+  background: linear-gradient(135deg, var(--green), #0f9d58);
+}
+
+.grid-3 .card:nth-child(3) .card-icon {
+  background: linear-gradient(135deg, var(--red), #d93025);
+}
+
+.card h3 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.card-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--blue);
+}
+
+/* APPROCHE / VALEUR */
+.value {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(66, 133, 244, 0.08), transparent 20%),
+    radial-gradient(circle at 90% 15%, rgba(251, 188, 5, 0.08), transparent 16%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.value-shell {
+  display: grid;
+  gap: 28px;
+  padding: 28px;
+  border-radius: 36px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(251,252,255,0.98) 100%);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-lg);
+}
+
+.value-copy {
+  max-width: 720px;
+  padding: 12px 4px;
+}
+
+.value-copy h2 {
+  max-width: 11ch;
+  margin-top: 18px;
+}
+
+.value-copy p {
+  margin-top: 18px;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  max-width: 30ch;
+}
+
+.value-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.value-item {
+  position: relative;
+  padding: 26px 28px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 14px;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.value-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  width: fit-content;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.value-item:nth-child(1) .value-step {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+}
+
+.value-item:nth-child(2) .value-step {
+  background: linear-gradient(135deg, var(--yellow-dark), var(--yellow));
+  color: #ffffff;
+}
+
+.value-item:nth-child(3) .value-step {
+  background: linear-gradient(135deg, var(--green), #0f9d58);
+}
+
+.value-item h3 {
+  font-size: 1.18rem;
+  line-height: 1.2;
+}
+
+.value-item p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+.audience {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.audience span {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  box-shadow: none;
+}
+
+.audience span:nth-child(1) {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.audience span:nth-child(2) {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.audience span:nth-child(3) {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+/* RASSURANCE STYLE COLORE */
+/* RASSURANCE — VERSION ALIGNÉE SUR LA SECTION APPROCHE */
+
+.reassurance {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(66, 133, 244, 0.08), transparent 20%),
+    radial-gradient(circle at 90% 15%, rgba(251, 188, 5, 0.08), transparent 16%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.reassurance-shell {
+  display: grid;
+  gap: 28px;
+  padding: 28px;
+  border-radius: 36px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(251,252,255,0.98) 100%);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-lg);
+}
+
+.reassurance-copy {
+  max-width: 720px;
+  padding: 12px 4px;
+}
+
+.reassurance-copy h2 {
+  max-width: 11ch;
+  margin-top: 18px;
+}
+
+.reassurance-copy p {
+  margin-top: 18px;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  max-width: 30ch;
+}
+
+.reassurance-copy .audience {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.reassurance-copy .audience span {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.reassurance-copy .audience span:nth-child(1) {
+  background: rgba(66, 133, 244, 0.12);
+  color: var(--blue);
+}
+
+.reassurance-copy .audience span:nth-child(2) {
+  background: rgba(52, 168, 83, 0.12);
+  color: var(--green);
+}
+
+.reassurance-copy .audience span:nth-child(3) {
+  background: rgba(234, 67, 53, 0.12);
+  color: var(--red);
+}
+
+.reassurance-stack {
+  display: grid;
+  gap: 20px;
+}
+
+.reassurance-item {
+  position: relative;
+  padding: 26px 28px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 14px;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.reassurance-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.reassurance-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  width: fit-content;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.reassurance-item:nth-child(1) .reassurance-tag {
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+}
+
+.reassurance-item:nth-child(2) .reassurance-tag {
+  background: linear-gradient(135deg, var(--yellow-dark), var(--yellow));
+}
+
+.reassurance-item:nth-child(3) .reassurance-tag {
+  background: linear-gradient(135deg, var(--green), #0f9d58);
+}
+
+.reassurance-item h3 {
+  font-size: 1.18rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.reassurance-item p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 52ch;
+  margin: 0;
+}
+
+@media (min-width: 980px) {
+  .reassurance-shell {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 34px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 979px) {
+  .reassurance-copy h2 {
+    max-width: 12ch;
+  }
+
+  .reassurance-copy p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .reassurance-shell {
+    padding: 18px;
+    border-radius: 26px;
+  }
+
+  .reassurance-copy {
+    padding: 4px 0;
+  }
+
+  .reassurance-copy h2 {
+    max-width: 12ch;
+  }
+
+  .reassurance-copy p {
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .reassurance-copy .audience {
+    gap: 10px;
+  }
+
+  .reassurance-copy .audience span {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 0.9rem;
+  }
+
+  .reassurance-item {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .reassurance-tag {
+    min-width: 66px;
+    height: 42px;
+    font-size: 0.96rem;
+  }
+}
+
+/* CONTACT */
+.contact-shell {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 34px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(251,252,255,0.98) 100%);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-copy {
+  padding: 6px;
+  max-width: 560px;
+}
+
+.contact-copy p {
+  margin-top: 16px;
+  font-size: 1.04rem;
+  max-width: 54ch;
+}
+
+.contact-points {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.contact-points li {
+  padding: 15px 16px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(16, 24, 40, 0.06);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.form-card {
+  padding: 22px;
+  border-radius: 26px;
+  background: #ffffff;
+  border: 1px solid rgba(16, 24, 40, 0.07);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.field span {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(16, 24, 40, 0.1);
+  background: #ffffff;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #98a2b3;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: rgba(66, 133, 244, 0.4);
+  box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+  background: #ffffff;
+}
+
+.field textarea {
+  min-height: 170px;
+  resize: vertical;
+}
+
+.form-note {
+  margin-top: 14px;
+  font-size: 0.92rem;
+  color: var(--muted);
+  min-height: 1.5em;
+}
+
+.site-footer {
+  padding: 28px 0 42px;
+}
+
+.footer-inner {
+  padding-top: 12px;
+  border-top: 1px solid rgba(16, 24, 40, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.footer-inner strong {
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 740px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 980px) {
+  .section {
+    padding: 108px 0;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav {
+    position: static;
+    inset: auto;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav a {
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 999px;
+  }
+
+  .hero {
+    padding-top: 22px;
+    padding-bottom: 34px;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .hero-shell {
+    padding: 26px;
+  }
+
+  .hero-stage {
+    min-height: 440px;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .value-shell {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 34px;
+    align-items: start;
+  }
+
+  .reassurance-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .contact-shell {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 28px;
+    align-items: start;
+  }
+}
+
+@media (max-width: 979px) {
+  .hero-shell {
+    padding: 20px;
+  }
+
+  .hero-copy p {
+    max-width: 100%;
+  }
+
+  .hero-stage {
+    min-height: 360px;
+    padding-top: 6px;
+  }
+
+  .hero-stage::before {
+    inset: 3% 2% 3% 2%;
+  }
+
+  .hero-media-card {
+    width: min(100%, 390px);
+    aspect-ratio: 4 / 3.7;
+  }
+
+  .floating-badge--top {
+    top: 3%;
+    left: 4%;
+  }
+
+  .floating-panel--one {
+    bottom: 14%;
+    left: 0;
+  }
+
+  .floating-panel--two {
+    bottom: 0;
+    right: 0;
+  }
+
+  .value-copy h2 {
+    max-width: 12ch;
+  }
+
+  .value-copy p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero {
+    padding-top: 16px;
+    padding-bottom: 22px;
+  }
+
+  .hero-shell {
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  h1 {
+    font-size: clamp(2.45rem, 12vw, 3.7rem);
+  }
+
+  .hero-grid {
+    gap: 18px;
+  }
+
+  .hero-copy h1 {
+    margin: 8px 0 10px;
+    line-height: 0.95;
+  }
+
+  .hero-copy p {
+    font-size: 0.98rem;
+    line-height: 1.58;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-points {
+    display: none;
+  }
+
+  .hero-stage {
+    min-height: auto;
+    padding-top: 2px;
+    margin-top: 2px;
+  }
+
+  .hero-stage::before {
+    inset: 2% 2% 2% 2%;
+    border-radius: 20px;
+  }
+
+  .hero-media-card {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 4 / 3.2;
+    border-radius: 18px;
+  }
+
+  .floating-badge {
+    min-height: 36px;
+    font-size: 0.75rem;
+    padding: 0 10px;
+  }
+
+  .floating-badge--top {
+    top: 2%;
+    left: 4%;
+    transform: scale(0.92);
+    transform-origin: top left;
+  }
+
+  .floating-panel {
+    width: min(150px, 46vw);
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .floating-panel strong {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .floating-panel span {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .floating-panel--one {
+    display: none;
+  }
+
+  .floating-panel--two {
+    bottom: -2%;
+    right: 0;
+  }
+
+  .hero-metrics {
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .metric {
+    padding: 14px;
+  }
+
+  .value-shell {
+    padding: 18px;
+    border-radius: 26px;
+  }
+
+  .value-copy {
+    padding: 4px 0;
+  }
+
+  .value-copy h2 {
+    max-width: 12ch;
+  }
+
+  .value-copy p {
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .value-item {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .value-step {
+    min-width: 66px;
+    height: 42px;
+    font-size: 0.96rem;
+  }
+
+  .audience {
+    gap: 10px;
+  }
+
+  .audience span {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 0.9rem;
+  }
+
+  .reassurance .section-head h2 {
+    max-width: 12ch;
+  }
+
+  .reassurance .section-head p {
+    max-width: 100%;
+  }
+
+  .reassurance-card {
+    padding: 22px;
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Repère Local Studio">
+        <svg class="brand-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="markBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#eef4ff"/>
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#markBg)"/>
+          <circle cx="22" cy="22" r="7" fill="#4285f4"/>
+          <circle cx="42" cy="22" r="7" fill="#ea4335"/>
+          <circle cx="22" cy="42" r="7" fill="#fbbc05"/>
+          <circle cx="42" cy="42" r="7" fill="#34a853"/>
+          <path d="M22 22L42 42" stroke="#101828" stroke-width="2.8" stroke-linecap="round" opacity="0.42"/>
+        </svg>
+        <span class="brand-copy">
+          <strong>Repère Local Studio</strong>
+          <span>Visibilité locale premium</span>
+        </span>
+      </a>
+
+      <div class="nav-wrap">
+        <nav class="nav" id="siteNav" aria-label="Navigation principale">
+          <a href="#services">Services</a>
+          <a href="#difference">Approche</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Ouvrir le menu">
+          <span></span>
+        </button>
+        <a href="#contact" class="btn btn--sm btn--ghost">Prendre contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell" data-reveal>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow">Google Business Profile + pages vitrines locales</div>
+              <h1>Une présence locale plus claire, plus crédible, plus facile à contacter.</h1>
+              <p>Repère Local Studio aide les artisans, indépendants et PME locales à mieux présenter leur activité grâce à une présence Google plus propre et des pages locales premium pensées pour rassurer et convertir.</p>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn">Demander un échange</a>
+                <a href="#services" class="btn btn--ghost">Découvrir l’offre</a>
+              </div>
+
+              <div class="hero-points">
+                <div class="hero-point">
+                  <div class="hero-point-badge">G</div>
+                  <div>
+                    <strong>Optimisation Google Business Profile</strong>
+                    <span>Une fiche plus lisible, plus cohérente et plus rassurante dès le premier regard.</span>
+                  </div>
+                </div>
+                <div class="hero-point">
+                  <div class="hero-point-badge">L</div>
+                  <div>
+                    <strong>Pages vitrines locales premium</strong>
+                    <span>Une page courte, élégante et mobile-first, pensée pour expliquer vite et inspirer confiance.</span>
+                  </div>
+                </div>
+                <div class="hero-point">
+                  <div class="hero-point-badge">C</div>
+                  <div>
+                    <strong>Structure orientée conversion</strong>
+                    <span>Le bon message, la bonne hiérarchie et des CTA visibles au bon moment.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-stage">
+              <div class="hero-media-card">
+                <img src="medias/Carte de visite professionnelle moderne.png" alt="Visuel lifestyle premium représentant une activité locale avec une ambiance sobre et crédible">
+                <div class="hero-media-glow"></div>
+              </div>
+
+              <div class="floating-badge floating-badge--top">Présence locale premium</div>
+
+              <div class="floating-panel floating-panel--one">
+                <strong>Clarté</strong>
+                <span>Votre activité doit être comprise en quelques secondes, sans friction ni surcharge.</span>
+              </div>
+
+              <div class="floating-panel floating-panel--two">
+                <strong>Contact</strong>
+                <span>Un parcours plus simple, plus fluide, plus naturel vers la prise de contact.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>Pour qui</strong>
+              <span>Artisans, indépendants et PME locales qui veulent une image plus solide en ligne.</span>
+            </div>
+            <div class="metric">
+              <strong>Ce qui change</strong>
+              <span>Une présence plus claire, plus premium et plus rassurante dès la première visite.</span>
+            </div>
+            <div class="metric">
+              <strong>Objectif</strong>
+              <span>Transformer une recherche locale en prise de contact concrète.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div class="eyebrow">Services</div>
+          <h2>L’essentiel pour mieux présenter votre activité localement.</h2>
+          <p>Une offre volontairement courte pour rester claire, lisible et directement utile à la conversion.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card" data-reveal>
+            <div class="card-icon">01</div>
+            <h3>Optimisation Google Business Profile</h3>
+            <p>Votre présence Google devient plus propre, plus cohérente et plus rassurante pour les prospects qui vous découvrent localement.</p>
+            <ul class="card-list">
+              <li>Positionnement plus compréhensible</li>
+              <li>Informations mieux structurées</li>
+              <li>Image locale plus crédible</li>
+            </ul>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card-icon">02</div>
+            <h3>Création de pages vitrines locales</h3>
+            <p>Une page premium, courte et claire pour présenter votre activité avec un meilleur niveau de confiance et une lecture rapide sur mobile.</p>
+            <ul class="card-list">
+              <li>Hero plus fort et plus lisible</li>
+              <li>Hiérarchie visuelle propre</li>
+              <li>Design sobre, moderne et crédible</li>
+            </ul>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card-icon">03</div>
+            <h3>Structure orientée prise de contact</h3>
+            <p>Le bon niveau de message, de rassurance et de CTA pour guider naturellement vers l’échange.</p>
+            <ul class="card-list">
+              <li>Parcours plus direct</li>
+              <li>Moins de friction</li>
+              <li>Plus de clarté dans l’action</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section value" id="difference">
+      <div class="container">
+        <div class="value-shell" data-reveal>
+          <div class="value-copy">
+            <div class="eyebrow">Approche</div>
+            <h2>Une logique simple : être trouvé, être compris, être contacté.</h2>
+            <p>Repère Local Studio ne cherche pas à complexifier. L’objectif est de créer une présence locale plus nette, plus premium et plus efficace, avec une cohérence forte entre votre fiche Google, votre message et votre page.</p>
+            <div class="audience">
+              <span>Artisans</span>
+              <span>Indépendants</span>
+              <span>PME locales</span>
+            </div>
+          </div>
+
+          <div class="value-stack">
+            <article class="value-item">
+              <div class="value-step">01</div>
+              <h3>Clarifier l’offre</h3>
+              <p>Votre activité, votre zone et votre valeur doivent être comprises rapidement, sans ambiguïté.</p>
+            </article>
+
+            <article class="value-item">
+              <div class="value-step">02</div>
+              <h3>Structurer la présence</h3>
+              <p>Chaque bloc doit servir la lisibilité, la confiance et la cohérence entre Google et votre page.</p>
+            </article>
+
+            <article class="value-item">
+              <div class="value-step">03</div>
+              <h3>Orienter vers l’action</h3>
+              <p>Des CTA bien placés et un parcours plus simple pour transformer l’intérêt en contact réel.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reassurance">
+  <div class="container">
+    <div class="reassurance-shell" data-reveal>
+      <div class="reassurance-copy">
+        <div class="eyebrow">Rassurance</div>
+        <h2>Une page pensée pour les entreprises locales qui veulent inspirer confiance immédiatement.</h2>
+        <p>Vous n’avez pas forcément besoin d’un site long. Vous avez surtout besoin d’une présence claire, professionnelle et facile à contacter.</p>
+
+        <div class="audience">
+          <span>Artisans</span>
+          <span>Indépendants</span>
+          <span>PME locales</span>
+        </div>
+      </div>
+
+      <div class="reassurance-stack">
+        <article class="reassurance-item">
+          <div class="reassurance-tag">01</div>
+          <h3>Une première impression plus premium</h3>
+          <p>Le visiteur comprend plus vite ce que vous faites et perçoit immédiatement une image plus sérieuse, plus stable et plus crédible.</p>
+        </article>
+
+        <article class="reassurance-item">
+          <div class="reassurance-tag">02</div>
+          <h3>Un message plus net</h3>
+          <p>Moins de dispersion, moins de jargon, plus de clarté. L’essentiel est mis en avant sans surcharger la lecture.</p>
+        </article>
+
+        <article class="reassurance-item">
+          <div class="reassurance-tag">03</div>
+          <h3>Une vraie logique mobile-first</h3>
+          <p>Espaces, hiérarchie visuelle et CTA sont pensés d’abord pour le smartphone, là où se joue une grande partie du trafic local.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-shell" data-reveal>
+          <div class="contact-copy">
+            <div class="eyebrow">Contact</div>
+            <h2>Parlons de votre visibilité locale.</h2>
+            <p>Décrivez brièvement votre activité, votre zone et ce que vous souhaitez améliorer. Le formulaire reste volontairement simple pour aller à l’essentiel.</p>
+
+            <ul class="contact-points">
+              <li>Optimisation Google Business Profile</li>
+              <li>Création de page vitrine locale</li>
+              <li>Clarification de votre positionnement local</li>
+            </ul>
+          </div>
+
+          <div class="form-card">
+            <form id="contactForm" novalidate>
+              <div class="form-grid">
+                <label class="field">
+                  <span>Nom</span>
+                  <input type="text" name="name" placeholder="Votre nom" required>
+                </label>
+
+                <label class="field">
+                  <span>Email</span>
+                  <input type="email" name="email" placeholder="votre@email.com" required>
+                </label>
+              </div>
+
+              <label class="field">
+                <span>Message</span>
+                <textarea name="message" placeholder="Décrivez brièvement votre activité et votre besoin" required></textarea>
+              </label>
+
+              <button type="submit" class="btn" style="width:100%;">Envoyer ma demande</button>
+              <p class="form-note" id="formNote" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <strong>Repère Local Studio</strong>
+      <span>© <span id="year"></span> — Présence locale premium</span>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("siteHeader");
+    const nav = document.getElementById("siteNav");
+    const navToggle = document.getElementById("navToggle");
+    const form = document.getElementById("contactForm");
+    const formNote = document.getElementById("formNote");
+    const recipient = "contact@votredomaine.fr";
+
+    const handleScroll = () => {
+      if (window.scrollY > 12) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        const expanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!expanded));
+        nav.classList.toggle("is-open");
+      });
+
+      nav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        const insideNav = nav.contains(event.target);
+        const insideToggle = navToggle.contains(event.target);
+        if (!insideNav && !insideToggle) {
+          nav.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    const revealItems = document.querySelectorAll("[data-reveal]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add("is-visible"));
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const nameField = form.elements.namedItem("name");
+      const emailField = form.elements.namedItem("email");
+      const messageField = form.elements.namedItem("message");
+
+      if (!nameField.value.trim() || !emailField.value.trim() || !messageField.value.trim()) {
+        formNote.textContent = "Merci de remplir tous les champs.";
+        return;
+      }
+
+      const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
+      if (!emailIsValid) {
+        formNote.textContent = "Merci d’indiquer une adresse email valide.";
+        return;
+      }
+
+      const subject = encodeURIComponent("Demande de contact — Repère Local Studio");
+      const body = encodeURIComponent(
+        "Nom : " + nameField.value.trim() + "\n" +
+        "Email : " + emailField.value.trim() + "\n\n" +
+        "Message :\n" + messageField.value.trim()
+      );
+
+      formNote.textContent = "Votre messagerie va s’ouvrir pour envoyer votre demande.";
+      window.location.href = "mailto:" + recipient + "?subject=" + subject + "&body=" + body;
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
